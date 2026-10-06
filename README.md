@@ -1,10 +1,12 @@
 # architecture-interior-design
 
 Skill bilingüe de dimensiones para arquitectura e interiorismo residencial,
-con normativas de Latinoamérica y Europa.
+con normativas de Latinoamérica, Europa y Londres. Al empezar, pregunta qué
+normativa usar.
 
 Bilingual skill for residential architecture and interior design dimensions,
-covering Latin American and European building codes.
+covering Latin American, European and London building codes. It first asks
+which regulations to use.
 
 ## Instalación / Installation
 
@@ -21,7 +23,7 @@ covering Latin American and European building codes.
 ```
 SKILL.md                         Instrucciones y flujo / Instructions and workflow
 references/*.md                  Tablas por espacio / Tables per space type
-references/normativa/*.md        Normas LatAm y Europa / LatAm and European codes
+references/normativa/*.md        Normas LatAm, Europa y Londres / LatAm, European and London codes
 references/glosario.md           Glosario ES-EN / ES-EN glossary
 SOURCES.md                       Fuentes y brechas por archivo / Sources and gaps per file
 METODOLOGIA.md                   Cómo se recolectaron los datos / How the data was collected

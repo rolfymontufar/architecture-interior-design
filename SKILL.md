@@ -1,17 +1,17 @@
 ---
 name: architecture-interior-design
-description: Medidas, áreas mínimas y recomendadas, y holguras para arquitectura e interiorismo residencial según normativas latinoamericanas y europeas (dormitorios, salas, comedores, cocinas, baños, pasillos, puertas, escaleras, mobiliario). Room sizes, minimum and recommended areas, and clearances for residential architecture and interior design under Latin American and European building codes (bedrooms, living and dining rooms, kitchens, bathrooms, hallways, doors, stairs, furniture). Usar cuando / Use when: cuánto mide, medidas de, espacio mínimo, distribución, planta, room size, minimum dimensions, floor plan, layout, clearance, building code.
+description: Medidas, áreas mínimas y recomendadas, y holguras para arquitectura e interiorismo residencial según normativas latinoamericanas, europeas y de Londres (dormitorios, salas, comedores, cocinas, baños, pasillos, puertas, escaleras, mobiliario). Room sizes, minimum and recommended areas, and clearances for residential architecture and interior design under Latin American, European and London building codes (bedrooms, living and dining rooms, kitchens, bathrooms, hallways, doors, stairs, furniture). Usar cuando / Use when: cuánto mide, medidas de, espacio mínimo, distribución, planta, room size, minimum dimensions, floor plan, layout, clearance, building code.
 ---
 
 # Arquitectura e Interiorismo / Architecture & Interior Design
 
 Skill bilingüe (español / English) para dimensionar y evaluar espacios
 residenciales con valores **mínimos**, **recomendados** y **holgados**, y
-comparar requisitos normativos de **Latinoamérica** y **Europa**.
+comparar requisitos normativos de **Latinoamérica**, **Europa** y **Londres**.
 
 Bilingual skill (Spanish / English) to size and evaluate residential spaces
 with **minimum**, **recommended** and **generous** values, and to compare
-regulatory requirements across **Latin America** and **Europe**.
+regulatory requirements across **Latin America**, **Europe** and **London**.
 
 ## Idioma / Language
 
@@ -41,12 +41,53 @@ regulatory requirements across **Latin America** and **Europe**.
     / Functional but tight; usually the legal minimum.
   - **Recomendado / Recommended:** confortable para uso diario. / Comfortable for daily use.
   - **Holgado / Generous:** amplio, gama media-alta. / Spacious, mid-to-high end.
-- **Normativa / Codes:** la norma local siempre prevalece. Si el usuario indica
-  país o ciudad, usar `references/normativa/`. / Local code always prevails.
-  If the user gives a country or city, use `references/normativa/`.
+- **Normativa / Codes:** la norma local siempre prevalece. Usar solo el marco
+  normativo elegido en el paso 0. / Local code always prevails. Use only the
+  regulatory framework chosen in step 0.
+
+## Paso 0: Elegir normativa / Step 0: Choose the regulatory framework
+
+**Antes de responder la primera pregunta, preguntar al usuario qué normativa
+usar**, en su idioma. / **Before answering the first question, ask the user
+which regulations to use**, in their language.
+
+- Español: "¿Qué normativa quieres que use: **latinoamericana**, **europea** o
+  **de Londres**?"
+- English: "Which regulations should I use: **Latin American**, **European** or
+  **London**?"
+
+Reglas / Rules:
+- Usar la herramienta de preguntas si existe (p. ej. AskUserQuestion); si no,
+  preguntar en texto y esperar la respuesta. / Use a question tool if available
+  (e.g. AskUserQuestion); otherwise ask in plain text and wait for the reply.
+- Si el usuario ya nombró un país o ciudad, no repetir la pregunta: deducir el
+  marco y confirmarlo en una línea al inicio de la respuesta (p. ej. "Uso la
+  normativa europea: CTE, Madrid."). / If the user already named a country or
+  city, do not ask again: infer the framework and confirm it in one line at the
+  top of the reply.
+- Preguntar una sola vez por conversación; mantener la elección hasta que el
+  usuario la cambie. / Ask once per conversation; keep the choice until the user
+  changes it.
+- Si elige Latinoamérica o Europa sin país, preguntar el país o ciudad; si no
+  lo sabe, dar la tabla comparativa de esa región. / If they pick Latin America
+  or Europe with no country, ask for the country or city; if unknown, give that
+  region's comparison table.
+
+| Elección / Choice | Archivo de normativa / Code file | Filas de las tablas por país / Country table rows |
+|---|---|---|
+| Latinoamericana / Latin American | `references/normativa/latinoamerica.md` | Solo LatAm / LatAm only |
+| Europea / European | `references/normativa/europa.md` | Solo Europa / Europe only |
+| Londres / London | `references/normativa/londres.md` (+ Reino Unido en `europa.md`) | Solo UK, con los valores de Londres por encima / UK only, London values override |
+
+- No mezclar normas de otra región salvo que el usuario pida comparar. /
+  Do not mix in other regions' codes unless the user asks to compare.
+- Los valores de diseño (mínimo, recomendado, holgado) se dan siempre; la
+  normativa elegida solo define el mínimo legal citado. / Design values are always
+  given; the chosen framework only defines the legal minimum cited.
 
 ## Flujo de trabajo / Workflow
 
+0. **Normativa / Framework:** ver paso 0. / See step 0.
 1. **Contexto / Context:** tipo de espacio, usuarios, país o ciudad, nivel de
    acabado, accesibilidad. / Space type, occupants, country or city, finish
    level, accessibility needs.
@@ -54,9 +95,10 @@ regulatory requirements across **Latin America** and **Europe**.
 3. **Responder con la tabla de tres niveles** más el lado mínimo libre, no solo
    el área. / **Answer with the three-level table** plus minimum clear side,
    not area alone.
-4. **Si hay país:** añadir el mínimo normativo (tabla por país al final del
-   archivo) y citar la norma. / **If a country is given:** add the regulatory
-   minimum (country table at the end of the file) and cite the code.
+4. **Mínimo legal / Legal minimum:** añadir el mínimo de la normativa elegida
+   (tabla por país al final del archivo, o `londres.md`) y citar la norma. /
+   Add the minimum from the chosen framework (country table at the end of the
+   file, or `londres.md`) and cite the code.
 5. **Validar mobiliario y circulación** con `mobiliario.md` y `circulacion.md`.
    / **Check furniture and circulation** with `mobiliario.md` and `circulacion.md`.
 6. **Señalar problemas y proponer ajustes** con medidas concretas. / **Flag
@@ -78,7 +120,8 @@ regulatory requirements across **Latin America** and **Europe**.
 | `references/accesibilidad.md` | Accesibilidad universal / Universal accessibility |
 | `references/confort-ambiental.md` | Techo, luz, ventilación / Ceiling height, daylight, ventilation |
 | `references/normativa/latinoamerica.md` | Normas por país de Latinoamérica / Latin American codes by country |
-| `references/normativa/europa.md` | Normas por país de Europa / European codes by country |
+| `references/normativa/europa.md` | Normas por país de Europa (incluye Reino Unido) / European codes by country (incl. UK) |
+| `references/normativa/londres.md` | London Plan y estándares de vivienda de Londres / London Plan and London housing standards |
 | `references/glosario.md` | Glosario ES-EN / ES-EN glossary |
 
 Archivos de espacio (dormitorios, sala-comedor, cocina, baños, circulación,

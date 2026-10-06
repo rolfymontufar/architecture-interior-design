@@ -14,7 +14,7 @@
 | Idiomas / Languages | Español e inglés en el mismo archivo / Spanish and English in the same file |
 | Unidades / Units | Métrico: m, m², holguras en cm / Metric: m, m², clearances in cm |
 | Medidas / Dimensions | Interiores libres, ancho x largo / Clear interior, width x length |
-| Regiones / Regions | Latinoamérica y Europa / Latin America and Europe |
+| Regiones / Regions | Latinoamérica, Europa y Londres / Latin America, Europe and London |
 | Niveles por espacio / Levels per space | Mínimo, Recomendado, Holgado / Minimum, Recommended, Generous |
 
 ### Ciudades de referencia / Reference cities
@@ -32,6 +32,7 @@ main city was chosen as reference.
 | España / Spain | CTE (nacional / national) + Madrid + Cataluña |
 | Chile, Perú, Costa Rica, Reino Unido, Francia, Alemania, Italia, Portugal, Países Bajos | Norma nacional / National code |
 | Ecuador | Quito (RTAU) |
+| Londres / London | London Plan + Housing Design Standards LPG (agregado / added 2026-10-06) |
 
 ## 2. Proceso / Process
 
