@@ -39,7 +39,7 @@ main city was chosen as reference.
 | Fase / Phase | Qué se hizo / What was done |
 |---|---|
 | 0. Esqueleto / Skeleton | Estructura de la skill, plantillas de tablas con columna de fuente / Skill structure, table templates with a source column |
-| 1. Mapa de conceptos / Concept map | 28 conceptos mínimos: 19 de arquitectura (A1 a A19) y 9 de interiorismo (B1 a B9), en `references/conceptos.md` / 28 core concepts: 19 architecture, 9 interior design |
+| 1. Mapa de conceptos / Concept map | 28 conceptos mínimos: 19 de arquitectura (A1 a A19) y 9 de interiorismo (B1 a B9), en `references/concepts.md` / 28 core concepts: 19 architecture, 9 interior design |
 | 2. Iteración 1 / Iteration 1 | 7 agentes en paralelo, uno por área: conceptos e interiorismo; dormitorios y mobiliario; sala-comedor y ergonomía; cocina y baños; circulación, accesibilidad y confort; normativa LatAm; normativa Europa / 7 parallel agents, one per area |
 | 3. Iteración 2 / Iteration 2 | 4 agentes de verificación: revisar cada valor marcado "a verificar" contra fuentes primarias, corregir errores, resolver contradicciones entre archivos, agregar resumen rápido; 1 agente para normas de accesibilidad de LatAm / 4 verification agents plus 1 for LatAm accessibility |
 | 4. Integración / Integration | 1 agente llenó las tablas comparativas por país usando solo los datos ya recolectados en `normativa/` (sin nuevas búsquedas) / 1 agent filled per-country tables using only data already in `normativa/` |
@@ -94,8 +94,8 @@ made during verification.
 
 Consistencia / Consistency: cuando dos archivos daban valores distintos para la
 misma métrica, se eligió un **archivo canónico** y los demás apuntan a él (p. ej.
-altura de mostrador en `cocina.md`, centro de TV en `ergonomia.md`, lux en
-`confort-ambiental.md`, barras de apoyo en `accesibilidad.md`). / When two files
+altura de mostrador en `kitchen.md`, centro de TV en `ergonomics.md`, lux en
+`environmental-comfort.md`, barras de apoyo en `accessibility.md`). / When two files
 disagreed, one canonical file was chosen and the others point to it.
 
 ## 6. Hallazgos relevantes / Key findings
@@ -137,8 +137,28 @@ disagreed, one canonical file was chosen and the others point to it.
 2. Buscar valores marcados (fs) o (av); al confirmar en fuente primaria, quitar la
    marca y actualizar la fuente. / Search (fs) or (av) values; on confirmation,
    remove the marker and update the source.
-3. Si se agrega un país, añadirlo en `normativa/` y luego en las tablas por país
-   de cada archivo de espacio. / New country: add to `normativa/`, then to each
-   space file's country table.
+3. Si se agrega un país o ciudad, crear `references/codes/<región>/<jurisdicción>.md`
+   con la misma estructura (Quick reference, Rooms, Circulation, Accessibility,
+   Comfort, Gaps), agregarlo a `_overview.md` y a la lista de `SKILL.md`. / New
+   jurisdiction: create its file with the same structure, add it to
+   `_overview.md` and to the list in `SKILL.md`.
 4. Mantener las reglas de la sección 3 y los marcadores de la sección 4. / Keep
    the rules in section 3 and markers in section 4.
+
+## 9. Optimización de tokens / Token optimization (2026-10-06)
+
+Objetivo: reducir los tokens que la skill carga por consulta sin perder datos. /
+Goal: cut tokens loaded per query without losing data.
+
+| Cambio / Change | Detalle / Detail |
+|---|---|
+| Datos en inglés / Data in English | Las referencias pasaron de bilingües a solo inglés (el inglés tokeniza mejor). El modelo traduce al responder; `glossary.md` sigue bilingüe con variantes regionales. Esta documentación sigue bilingüe. / References moved from bilingual to English only; glossary stays bilingual. |
+| Normativa por jurisdicción / Codes per jurisdiction | `normativa/latinoamerica.md` y `europa.md` se dividieron en un archivo por ciudad o país en `references/codes/`, más un `_overview.md` por región. Las tablas por país de cada archivo de espacio se movieron ahí. / Split into one file per jurisdiction; per-country tables moved there. |
+| Fuentes aparte / Sources apart | Las listas de fuentes se movieron a `references/sources.md`; los datos conservan el ID corto. / Source lists moved to one file; data keeps short IDs. |
+| Resumen rápido primero / Quick reference first | `SKILL.md` indica leer solo las primeras ~25 líneas, luego buscar la sección, y el archivo completo solo si hace falta. / Read first ~25 lines, then grep, full file only if needed. |
+| `SKILL.md` compacto / Compact `SKILL.md` | De 10,921 a ~4,200 caracteres; descripción de 714 a 365. / From 10,921 to ~4,200 chars; description 714 to 365. |
+
+Verificación / Verification: se compararon todos los valores numéricos únicos
+del contenido anterior (1,063) contra el nuevo; todos se conservan (uno cambió de
+unidad: 0.62 m pasó a 620 mm y 62 cm). / All 1,063 unique numeric values were
+checked against the new content; all are preserved.

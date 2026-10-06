@@ -22,9 +22,10 @@ which regulations to use.
 
 ```
 SKILL.md                         Instrucciones y flujo / Instructions and workflow
-references/*.md                  Tablas por espacio / Tables per space type
-references/normativa/*.md        Normas LatAm, Europa y Londres / LatAm, European and London codes
-references/glosario.md           Glosario ES-EN / ES-EN glossary
+references/*.md                  Datos por tema, en inglés / Topic data, in English
+references/codes/                Un archivo por ciudad o país / One file per jurisdiction
+references/glossary.md           Glosario ES-EN / ES-EN glossary
+references/sources.md            Citas completas / Full citations
 SOURCES.md                       Fuentes y brechas por archivo / Sources and gaps per file
 METODOLOGIA.md                   Cómo se recolectaron los datos / How the data was collected
 ```
