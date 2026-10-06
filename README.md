@@ -34,3 +34,7 @@ Los datos se recolectaron con agentes de investigación en dos iteraciones
 Ver `METODOLOGIA.md`. / Data was collected by research agents in two
 iterations (research and verification) with sourcing rules and confidence
 markers. See `METODOLOGIA.md`.
+
+## Licencia / License
+
+MIT. Ver / See `LICENSE`.
